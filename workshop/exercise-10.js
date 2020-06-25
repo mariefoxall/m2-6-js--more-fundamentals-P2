@@ -2,30 +2,30 @@
 // -----------
 
 let inputData = {
-  name: 'Will Byers',
+  name: "Will Byers",
   age: 9,
-  status: 'upside down',
-  superpower1: 'can-blink-lights',
+  status: "upside down",
+  superpower1: "can-blink-lights",
   superpower2: null,
-  address1: '123 Whatever street',
-  addressCity: 'Hawkins',
-  addressState: 'Indiana',
-  addressCountry: 'United States',
-  motherName: 'Joyce Byers',
+  address1: "123 Whatever street",
+  addressCity: "Hawkins",
+  addressState: "Indiana",
+  addressCountry: "United States",
+  motherName: "Joyce Byers",
   motherAge: 35,
-  motherStatus: 'worried',
+  motherStatus: "worried",
   motherSuperpower1: null,
-  motherSuperpower1: null,
-  bestFriendName: 'Mike Wheeler',
+  motherSuperpower2: null,
+  bestFriendName: "Mike Wheeler",
   bestFriendAge: 9,
-  bestFriendStatus: 'frenetic',
+  bestFriendStatus: "frenetic",
   bestFriendSuperpower1: null,
-  bestFriendSuperpower1: null,
-  girlfriendName: 'Eleven',
+  bestFriendSuperpower2: null,
+  girlfriendName: "Eleven",
   girlfriendAge: 9,
-  girlfriendStatus: 'angry',
-  girlfriendSuperpower1: 'telepathy',
-  girlfriendSuperpower1: 'multiverse portal sealing',
+  girlfriendStatus: "angry",
+  girlfriendSuperpower1: "telepathy",
+  girlfriendSuperpower2: "multiverse portal sealing",
 };
 
 // We want a function that can transform it from that shape to this shape:
@@ -80,7 +80,42 @@ let inputData = {
 // ⛔️ ['can-blink-lights', null]
 
 function transformData(data) {
-  // Your code here
+  let personalData = {
+    name: data.name,
+    age: data.age,
+    status: data.status,
+    address: {
+      streetAddress: data.address1,
+      city: data.addressCity,
+      state: data.addressState,
+      country: data.addressCountry,
+    },
+    superpowers: [data.superpower1],
+    relationships: [
+      {
+        type: "mother",
+        name: data.motherName,
+        age: data.motherAge,
+        status: data.motherStatus,
+        superpowers: [],
+      },
+      {
+        type: "bestFriend",
+        name: data.bestFriendName,
+        age: data.bestFriendAge,
+        status: data.bestFriendStatus,
+        superpowers: [],
+      },
+      {
+        type: "girlfriend",
+        name: data.girlfriendName,
+        age: data.girlfriendAge,
+        status: data.girlfriendStatus,
+        superpowers: [data.girlfriendSuperpower1, data.girlfriendSuperpower2],
+      },
+    ],
+  };
+  return personalData;
 }
 
 // `JSON.stringify` is used to "pretty-print" the output, so that it's easy
